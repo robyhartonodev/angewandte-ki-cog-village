@@ -129,6 +129,13 @@ For the 35 behavioral activities marked with *, executions performed by the left
 2. Obviously do NOT test the designed classifier with the training data set
 3. General accuracy and F1 score are used for accuracy analysis (for the case of Deep Learning Mean Average Precisin to be used)
 4. Report all classification parameters (accuracy, false/true detection, sensitivity, specificity, etc.)
-## 4. Sources
+
+
+## 4. Milestones
+
+1. [] MS1: realizing the data set, data pre-processing and first code structure
+2. [] MS2: feature selection and implementation
+3. [] MS3: classifier design and performance evaluation
+## 5. Sources
 
 [1] Deep Transfer Learning for Time Series Data Based on Sensor Modality Classification, F. Li, K. Shirahama, M. A. Nisar, X. Huang, M. Grzegorzek
