@@ -133,9 +133,9 @@ For the 35 behavioral activities marked with *, executions performed by the left
 
 ## 4. Milestones
 
-1. [] MS1: realizing the data set, data pre-processing and first code structure
-2. [] MS2: feature selection and implementation
-3. [] MS3: classifier design and performance evaluation
+1. [ ] MS1: realizing the data set, data pre-processing and first code structure
+2. [ ] MS2: feature selection and implementation
+3. [ ] MS3: classifier design and performance evaluation
 ## 5. Sources
 
 [1] Deep Transfer Learning for Time Series Data Based on Sensor Modality Classification, F. Li, K. Shirahama, M. A. Nisar, X. Huang, M. Grzegorzek
