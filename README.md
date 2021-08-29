@@ -45,19 +45,25 @@ For the 35 behavioral activities marked with *, executions performed by the left
 
 ## 2.1 Data pre-processing: 
 
-### TODO Explanation
+The Standard scaler as a pre-processing operation is later included in some of the classifiers e.g. SVM, KNN and Logistic Regression, as some classifiers do not perform well without it.
 
 ## 2.2 Feature selection and generation
 
-### TODO Explanation
+The statistical features from the dataset are extracted using the ``numpy`` package, e.g. mean, variance, maximum and minimum. Certain features such as ``rightHand``, ``sessionId`` and ``subjectId`` are not included due to being irrelevant as a feature. The ``JinsBlinkStrength`` feature is excluded because some data does not contain this data.
+
+Later, a feature selection process is implemented using the ``RandomForestClassifier`` to find out the importance of the features and ``SelectFromModel`` to extract the features that are considered as the best features by the ``RandomForestClassifier``. These selected features were then used to further improve the performance of the classifier.
 
 ## 2.3. Classifier design 
 
-### TODO Explanation
+### TODO Explanation selected classifiers
 
 ## 2.4. Accuracy analysis
 
-### TODO Explanation
+The performance of the classifier is measured with a tenfold cross-validation method and AUC-ROC score and curve.
+
+The tenfold cross-validation score measurement is performed before the ``OneVsRestClassifier`` wrapper is implemented in the classifier.
+
+Since the AUC-ROC curve is only possible for the binarized problem (2 classes), ``OneVsRestClassifier`` is needed as a wrapper for the classifiers.
 
 ## 3. Objectives and guideline
 
@@ -78,9 +84,14 @@ For the 35 behavioral activities marked with *, executions performed by the left
 
 ## 4. Milestones
 
-1. [ ] MS1: realizing the data set, data pre-processing and first code structure
-2. [ ] MS2: feature selection and implementation
+1. [X] MS1: realizing the data set, data pre-processing and first code structure
+2. [X] MS2: feature selection and implementation
 3. [ ] MS3: classifier design and performance evaluation
-## 5. Sources
+
+## 6. Conclusions
+
+### TODO Explanation
+
+## 7. Sources
 
 [1] Deep Transfer Learning for Time Series Data Based on Sensor Modality Classification, F. Li, K. Shirahama, M. A. Nisar, X. Huang, M. Grzegorzek
