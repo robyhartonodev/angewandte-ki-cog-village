@@ -23,12 +23,12 @@ Folder ``../dictionaries/``: processed data saved in the Python format .pkl. Eac
 Activity labels were attributed as follows:
 
 ```
-Bending: 0,
-Lying: 1,
-Sitting: 2,
-Squatting: 3,
-Standing: 4,
-Walking: 5,
+Bending: 0
+Lying: 1
+Sitting: 2
+Squatting: 3
+Standing: 4
+Walking: 5
 ```
 
 For the 35 behavioral activities marked with *, executions performed by the left or right hand were distinguished.
