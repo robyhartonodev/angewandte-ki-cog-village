@@ -45,7 +45,13 @@ For the 35 behavioral activities marked with *, executions performed by the left
 
 ## 2.1 Data pre-processing: 
 
-The Standard scaler as a pre-processing operation is later included in some of the classifiers e.g. SVM, KNN and Logistic Regression, as some classifiers do not perform well without it.
+See the methods ``feature_selection_random_forest`` and ``feature_selection_pca`` inside the file ``helper.py`` for the feature selection implementation. 
+
+The ``StandardScaler`` as a pre-processing operation is later included in some of the classifiers e.g. SVM, KNN and Logistic Regression, as some classifiers do not perform well without it.
+
+The ``MinMaxScaler`` must be implemented before the fitting process of the ``Naive Bayes`` model, as the model throws an exception for negative values.
+
+All of the model is trained with train test split of 70% and 30% using ``train_test_split`` method.
 
 ## 2.2 Feature selection and generation
 
@@ -64,6 +70,8 @@ The KNN (K-Neighrest Neighbor) classifier is well known out to be used for the m
 The Random Forest Classifier is also well suited for this type of classification due to how well it handles a large amount of data, although it requires more performance. [3]
 
 ## 2.4. Accuracy analysis
+
+See the methods ``compare_classifier_score`` and ``classifier_auc_roc_score`` inside the file ``helper.py`` for the classifier performance comparison implementation.
 
 The performance of the classifier is measured with a tenfold cross-validation method and AUC-ROC score and curve.
 
