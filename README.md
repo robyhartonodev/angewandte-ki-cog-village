@@ -33,15 +33,15 @@ Walking: 5
 
 For the 35 behavioral activities marked with *, executions performed by the left or right hand were distinguished.
 
-3- Folder ``/python/arrays/``: training and testing data and labels used in the study of [1], saved in the format ``.npy.`` Arrays of data and associated vector of labels are provided for each device separately. Data arrays have a shape N x T x S with N total number of executions in the dataset, T length equal to 4 seconds of data (which depends on the device) and S number of sensor channels of the device. Label vectors have a size of N. Training and testing datasets are provided for state activities, behvioral left-hand only (BLHO), behavioral both hands (BBH) and all activities mixed. Note: for state, BBH and BLHO datasets, activity labels were projected in the range [0,N-1] with N in {6,55} total number of activities. For BBH and BLHO in particular, newLabel <- oldLabel - 6.
+3- Folder ``/python/arrays/``: training and testing data and labels used in the study of [1], saved in the format ``.npy.`` Arrays of data and associated vector of labels are provided for each device separately. Data arrays have a shape N x T x S with N total number of executions in the dataset, T length equal to 4 seconds of data (which depends on the device) and S number of sensor channels of the device. Label vectors have a size of N. Training and testing datasets are provided for state activities, behavioral left-hand only (BLHO), behavioral both hands (BBH) and all activities mixed. Note: for state, BBH and BLHO datasets, activity labels were projected in the range [0,N-1] with N in {6,55} total number of activities. For BBH and BLHO in particular, newLabel <- oldLabel - 6.
 
 ## 2. Pipeline
 
 1. [x] Sensor data acquisition: sensor placement, sensor choice, subjects (patients) recruitment, ethic protocol, etc.
-2. [ ] Data pre-processing: noise removal, normalization, down/up sampling, possible dimension reduction, data filtering.
-3. [ ] Feature selection and generation: selecting the most discriminating feature, selecting the relevant values from the extracted feature, feature dimensionality reduction
-4. [ ] Classifier design: select the classifier, train the classfier, classifier parameters optimization, evaluation of the classifier
-5. [ ] Accuracy analyis: designing a feedback loop, possible re-design of the classifier and feature selection.
+2. [x] Data pre-processing: noise removal, normalization, down/up sampling, possible dimension reduction, data filtering.
+3. [x] Feature selection and generation: selecting the most discriminating feature, selecting the relevant values from the extracted feature, feature dimensionality reduction
+4. [x] Classifier design: select the classifier, train the classfier, classifier parameters optimization, evaluation of the classifier
+5. [x] Accuracy analyis: designing a feedback loop, possible re-design of the classifier and feature selection.
 
 ## 2.1 Data pre-processing: 
 
@@ -55,7 +55,13 @@ Later, a feature selection process is implemented using the ``RandomForestClassi
 
 ## 2.3. Classifier design 
 
-### TODO Explanation selected classifiers
+For the selection of classification options, the most common classifiers used in the event were used, with the exception of a Neural Network based model.
+
+This project is a multiclass classification problem, which means that some binary classification methods have to be adapted or used in a different form (e.g. Multinomial Bayes instead of the normal, naïve Bayes).
+
+The KNN (K-Neighrest Neighbor) classifier is well known out to be used for the multiclass problems, which is why it is chosen as our model. [2]
+
+The Random Forest Classifier is also well suited for this type of classification due to how well it handles a large amount of data, although it requires more performance. [3]
 
 ## 2.4. Accuracy analysis
 
@@ -86,12 +92,16 @@ Since the AUC-ROC curve is only possible for the binarized problem (2 classes), 
 
 1. [X] MS1: realizing the data set, data pre-processing and first code structure
 2. [X] MS2: feature selection and implementation
-3. [ ] MS3: classifier design and performance evaluation
+3. [X] MS3: classifier design and performance evaluation
 
-## 6. Conclusions
+## 5. Conclusions
 
-### TODO Explanation
+From the results, the classifier Random Forest with the preprocessing method StandardScaler and the feature selection method Random Forest with the TFCC average score of 97.4% and AUC-ROC curve with the average score of 1.0 is the best classifier for the pattern recognition problem that we implemented.
 
-## 7. Sources
+## 6. Sources
 
 [1] Deep Transfer Learning for Time Series Data Based on Sensor Modality Classification, F. Li, K. Shirahama, M. A. Nisar, X. Huang, M. Grzegorzek
+
+[2] Harrison O. Machine learning basics with the K-nearest neighbors algorithm [Internet]. Towards Data Science. 2018 [cited 2021 Sep 26]. Available from: https://towardsdatascience.com/machine-learning-basics-with-the-k-nearest-neighbors-algorithm-6a6e71d01761
+
+[3] Kho J. Why random forest is my favorite machine learning model [Internet]. Towards Data Science. 2018 [cited 2021 Sep 26]. Available from: https://towardsdatascience.com/why-random-forest-is-my-favorite-machine-learning-model-b97651fa3706
