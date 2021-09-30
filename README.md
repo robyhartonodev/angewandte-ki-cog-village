@@ -35,7 +35,26 @@ For the 35 behavioral activities marked with *, executions performed by the left
 
 3- Folder ``/python/arrays/``: training and testing data and labels used in the study of [1], saved in the format ``.npy.`` Arrays of data and associated vector of labels are provided for each device separately. Data arrays have a shape N x T x S with N total number of executions in the dataset, T length equal to 4 seconds of data (which depends on the device) and S number of sensor channels of the device. Label vectors have a size of N. Training and testing datasets are provided for state activities, behavioral left-hand only (BLHO), behavioral both hands (BBH) and all activities mixed. Note: for state, BBH and BLHO datasets, activity labels were projected in the range [0,N-1] with N in {6,55} total number of activities. For BBH and BLHO in particular, newLabel <- oldLabel - 6.
 
-## 2. Pipeline
+## 2. Tools and Libraries
+
+The following tools and libraries are used for this project:
+
+- Python 3.9.7
+- SKLearn 0.24.2
+- NumPy
+- SciPy
+- Matplotlib 3.4.2
+- VSCode
+- VSCode Extensions: Jupyter Core 4.7.1 and Jupyter Notebook 6.4.0
+
+## 3. Directories
+
+- `data` - data directory that contains the pickle data set.
+- `main.ipynb` - main notebook. This file describes our workflows, processes and workflows.
+- `read.ipynb` - playground notebook. This file is where we tested our codes.
+- `helper.py` - python helper file. This file contains helper function for comparison and plotting.
+
+## 4. Pipeline
 
 1. [x] Sensor data acquisition: sensor placement, sensor choice, subjects (patients) recruitment, ethic protocol, etc.
 2. [x] Data pre-processing: noise removal, normalization, down/up sampling, possible dimension reduction, data filtering.
@@ -43,7 +62,7 @@ For the 35 behavioral activities marked with *, executions performed by the left
 4. [x] Classifier design: select the classifier, train the classfier, classifier parameters optimization, evaluation of the classifier
 5. [x] Accuracy analyis: designing a feedback loop, possible re-design of the classifier and feature selection.
 
-## 2.1 Data pre-processing: 
+## 4.1 Data pre-processing: 
 
 See the methods ``feature_selection_random_forest`` and ``feature_selection_pca`` inside the file ``helper.py`` for the feature selection implementation. 
 
@@ -53,13 +72,13 @@ The ``MinMaxScaler`` must be implemented before the fitting process of the ``Nai
 
 All of the model is trained with train test split of 70% and 30% using ``train_test_split`` method.
 
-## 2.2 Feature selection and generation
+## 4.2 Feature selection and generation
 
 The statistical features from the dataset are extracted using the ``numpy`` package, e.g. mean, variance, maximum and minimum. Certain features such as ``rightHand``, ``sessionId`` and ``subjectId`` are not included due to being irrelevant as a feature. The ``JinsBlinkStrength`` feature is excluded because some data does not contain this data.
 
 Later, a feature selection process is implemented using the ``RandomForestClassifier`` to find out the importance of the features and ``SelectFromModel`` to extract the features that are considered as the best features by the ``RandomForestClassifier``. These selected features were then used to further improve the performance of the classifier.
 
-## 2.3. Classifier design 
+## 4.3 Classifier design 
 
 For the selection of classification options, the most common classifiers used in the event were used, with the exception of a Neural Network based model.
 
@@ -69,7 +88,7 @@ The KNN (K-Neighrest Neighbor) classifier is well known out to be used for the m
 
 The Random Forest Classifier is also well suited for this type of classification due to how well it handles a large amount of data, although it requires more performance. [3]
 
-## 2.4. Accuracy analysis
+## 4.4 Accuracy analysis
 
 See the methods ``compare_classifier_score`` and ``classifier_auc_roc_score`` inside the file ``helper.py`` for the classifier performance comparison implementation.
 
@@ -79,9 +98,9 @@ The tenfold cross-validation score measurement is performed before the ``OneVsRe
 
 Since the AUC-ROC curve is only possible for the binarized problem (2 classes), ``OneVsRestClassifier`` is needed as a wrapper for the classifiers.
 
-## 3. Objectives and guideline
+## 5. Objectives and guideline
 
-### 3.1. Objectives
+### 5.1. Objectives
 
 1. Classification of the desired pattern
 2. Implementation the whole PR pipeline
@@ -89,24 +108,24 @@ Since the AUC-ROC curve is only possible for the binarized problem (2 classes), 
 4. Visualizing the results
 5. Presentation of the project and the solution
 
-### 3.2. Guideline 
+### 5.2. Guideline 
 1. Use just provided train and (test) sets
 2. Obviously do NOT test the designed classifier with the training data set
 3. General accuracy and F1 score are used for accuracy analysis (for the case of Deep Learning Mean Average Precisin to be used)
 4. Report all classification parameters (accuracy, false/true detection, sensitivity, specificity, etc.)
 
 
-## 4. Milestones
+## 6. Milestones
 
 1. [X] MS1: realizing the data set, data pre-processing and first code structure
 2. [X] MS2: feature selection and implementation
 3. [X] MS3: classifier design and performance evaluation
 
-## 5. Conclusions
+## 7. Conclusions
 
 From the results, the classifier Random Forest with the preprocessing method StandardScaler and the feature selection method Random Forest with the TFCC average score of 97.4% and AUC-ROC curve with the average score of 1.0 is the best classifier for the pattern recognition problem that we implemented.
 
-## 6. Sources
+## 8. Sources
 
 [1] Deep Transfer Learning for Time Series Data Based on Sensor Modality Classification, F. Li, K. Shirahama, M. A. Nisar, X. Huang, M. Grzegorzek
 
