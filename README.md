@@ -50,7 +50,7 @@ The following tools and libraries are used for this project:
 ## 3. Directories
 
 - `data` - data directory that contains the pickle data set.
-- `main.ipynb` - main notebook. This file describes our workflows, processes and workflows.
+- `main.ipynb` - main notebook. This file describes our workflows and processes.
 - `read.ipynb` - playground notebook. This file is where we tested our codes.
 - `helper.py` - python helper file. This file contains helper function for comparison and plotting.
 
